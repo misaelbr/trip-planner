@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.rdp {
+  --rdp-accent-color: #BEF264; /* Accent color for the background of selected days. */
+  --rdp-background-color: #6a8538; /* Background color for the hovered/focused elements. */
+  --rdp-selected-color: #000; /* Color of selected day text */
+}
+
+* {
+  min-width: 0;
+}
+
+input {
+  color-scheme: dark;
+}
+
