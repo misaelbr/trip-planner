@@ -1,4 +1,3 @@
-import { Activity } from 'lucide-react'
 import { create } from 'zustand'
 
 import { api } from '../lib/axios'
