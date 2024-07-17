@@ -1,3 +1,4 @@
+import { endOfDay } from 'date-fns'
 import { type FormEvent, useState } from 'react'
 import type { DateRange } from 'react-day-picker'
 import { useNavigate } from 'react-router-dom'
@@ -104,7 +105,7 @@ export function CreateTripPage() {
     const response = await api.post('/trips', {
       destination,
       starts_at: eventStartAndEndDates.from,
-      ends_at: eventStartAndEndDates.to,
+      ends_at: endOfDay(eventStartAndEndDates.to),
       emails_to_invite: emailsToInvite,
       owner_name: ownerName.trim(),
       owner_email: onwnerEmail.trim(),
@@ -169,6 +170,13 @@ export function CreateTripPage() {
           createTrip={createTrip}
           setOwnerName={setOwnerName}
           setOwnerEmail={setOwnerEmail}
+          setDetails={{
+            destination,
+            dates: {
+              starts_at: eventStartAndEndDates?.from || '',
+              ends_at: eventStartAndEndDates?.to || '',
+            },
+          }}
         />
       )}
     </div>

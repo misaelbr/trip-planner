@@ -2,12 +2,17 @@ import { MailCheck, ThumbsUp, User, X } from 'lucide-react'
 import type { FormEvent } from 'react'
 
 import { Button } from '../../components/button'
+import { formatDateRange } from '../../lib/format-date'
 
 interface ConfirmTripModalProps {
   closeConfirmTripModal: () => void
   createTrip: (event: FormEvent<HTMLFormElement>) => void
   setOwnerName: (ownerName: string) => void
   setOwnerEmail: (ownerEmail: string) => void
+  setDetails: {
+    destination: string
+    dates: { starts_at: string | Date; ends_at: string | Date }
+  }
 }
 
 export function ConfirmTripModal({
@@ -15,6 +20,7 @@ export function ConfirmTripModal({
   createTrip,
   setOwnerName,
   setOwnerEmail,
+  setDetails: { destination, dates },
 }: ConfirmTripModalProps) {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/60">
@@ -30,12 +36,10 @@ export function ConfirmTripModal({
           </div>
           <p className="text-sm text-zinc-400">
             Para concluir a criação da viagem para{' '}
+            <span className="font-semibold text-zinc-100">{destination}</span>{' '}
+            no período de{' '}
             <span className="font-semibold text-zinc-100">
-              Florianópolis, SC
-            </span>{' '}
-            nas datas de{' '}
-            <span className="font-semibold text-zinc-100">
-              16 a 27 de agosto de 2024
+              {formatDateRange(dates.starts_at, dates.ends_at)}
             </span>{' '}
             preencha seus dados abaixo:
           </p>
