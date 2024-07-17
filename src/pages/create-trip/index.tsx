@@ -145,11 +145,11 @@ export function CreateTripPage() {
         <p className="text-sm text-zinc-500">
           Ao planejar seu plann.er você automaticamente concorda
           <br /> com nossos{' '}
-          <a className="texzin300 underline" href="#">
+          <a className="text-zinc-300 underline" href="#">
             termos de uso
           </a>{' '}
           e{' '}
-          <a className="texzin300 underline" href="#">
+          <a className="text-zinc-300 underline" href="#">
             políticas de privacidade
           </a>
           .
