@@ -1,5 +1,5 @@
 import { Calendar, Tag, ThumbsUp, X } from 'lucide-react'
-import { type FormEvent, useEffect, useRef } from 'react'
+import { type FormEvent, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { Button } from '../../components/button'
@@ -13,7 +13,6 @@ interface CreateAcitivyModalProps {
 export function CreateActivityModal({
   closeCreateActivityModal,
 }: CreateAcitivyModalProps) {
-  const formRef = useRef<HTMLFormElement>(null)
   const { load, refresh } = useActivitiesStore((store) => {
     return {
       load: store.load,
@@ -40,9 +39,7 @@ export function CreateActivityModal({
       occurs_at: occursAt,
     })
 
-    if (formRef.current) {
-      formRef.current.reset()
-    }
+    event.currentTarget.reset()
 
     refresh(tripId)
     await load()
@@ -67,7 +64,7 @@ export function CreateActivityModal({
           </p>
         </div>
 
-        <form ref={formRef} onSubmit={createActivity} className="space-y-3">
+        <form onSubmit={createActivity} className="space-y-3">
           <div className="flex h-14 items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-950 px-4">
             <Tag className="size-5 text-zinc-400" />
             <input
