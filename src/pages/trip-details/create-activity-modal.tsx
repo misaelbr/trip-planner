@@ -88,7 +88,7 @@ export function CreateActivityModal({
             </div>
           </div>
           <Button type="submit" variant="primary" size="full">
-            Salvar atividade <ThumbsUp className="size-5" />
+            Salvar atividade <ThumbsUp className="size-4" />
           </Button>
         </form>
       </div>
